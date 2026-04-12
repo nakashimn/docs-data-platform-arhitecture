@@ -11,37 +11,45 @@
 主要なファクターに対してそれぞれ3通りのアプローチを示す。
 
 - データモデル
-  - 純データレイク
-  - ディメンショナルモデリング
-  - DataVault + ディメンショナルモデリング
+  - 開発容易性 ⇔ 分析パフォーマンス
+    - スキーマオンリード : 純データレイク
+    - OLTP志向 : リレーショナルデータベース(第三正規形)
+    - OLAP志向 : ディメンショナルモデリング
 - データ取込
-  - 内部ステージ
-  - 外部ステージ
-  - SnowflakeOpenFlow
+  - 開発容易性 ⇔ 運用容易性
+    - モノリシックストレージ : 内部ステージ
+    - データレイク・DWH分離 : 外部ステージ
+    - サーバレス・ストリーミング : SnowflakeOpenFlow
 - データ変換
-  - DynamicTable
-  - dbt
-  - Snowpark
+  - 運用容易性 ⇔ 自由度
+    - 宣言的オートメーション : DynamicTable
+    - ワークフローエンジニアリング : dbt
+    - プログラマブルトランスフォーム : Snowpark
 - ジョブオーケストレーション
-  - dbtCloud
-  - dbtProject on Snowflake
-  - AirFlow
+  - スコープの広さ ⇔ 運用容易性
+    - モノリシック : dbtProject on Snowflake
+    - トランスフォーム特化管理 : dbtCloud
+    - パイプライン全体管理 : AirFlow
 - リソース管理
-  - SnowSight
-  - Terraform
-  - SnowflakeDevOps(SnowflakeCLI, SnowflakePythonAPI)
+  - 直感的操作性 ⇔ 再現性・監査性
+    - アドホック : SnowSight
+    - 命令型インフラアズコード : SnowflakeDevOps(SnowflakeCLI, SnowflakePythonAPI)
+    - 宣言型インフラアズコード : Terraform
 - データカタログ
-  - dbtCloud
-  - SnowflakeHrizonCatalog
-  - OpenMetadata
+  - 開発容易性 ⇔ コンテキストの解像度
+    - マニュアル・ドキュメント : GoogleSpreadSheet
+    - コードベース管理 : SnowflakeHrizonCatalog
+    - メタデータハブ : OpenMetadata
 - ロール設計
-  - 最小構成
-  - リテラシー・役割軸
-  - 組織・ドメイン軸
+  - 運用容易性 ⇔ セキュリティ・スケーラビリティ
+    - 最小構成
+    - リテラシー・役割軸
+    - 組織・ドメイン軸
 - BIツール
-  - GoogleSpreadSheet
-  - LookerStudio
-  - Streamlit
+  - 普及度・導入容易性 ⇔ 分析パフォーマンス・運用容易性
+    - スクラッチ・ダッシュボード : GoogleSpreadSheet
+    - マネージド・ダッシュボード : LookerStudio, Domo
+    - マネージド・データアプリ : Streamlit
 
 [選択肢がないのでAppendix]
 - アラート設計
